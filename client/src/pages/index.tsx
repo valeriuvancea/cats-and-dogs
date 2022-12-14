@@ -15,10 +15,10 @@ const IndexPage: React.FC<PageProps> = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getNewFact();
+    getRandomFact();
   }, []);
 
-  const getNewFact = () => {
+  const getRandomFact = () => {
     setLoading(true);
     getCatFact()
       .then((fact) => setFact(fact))
@@ -37,7 +37,7 @@ const IndexPage: React.FC<PageProps> = () => {
       ) : (
         <>
           <Fact>{fact}</Fact>
-          <Button onClick={getNewFact}>Get new fact</Button>
+          <Button onClick={getRandomFact}>Get new fact</Button>
         </>
       )}
     </TemplatePage>
