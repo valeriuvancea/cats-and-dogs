@@ -1,5 +1,6 @@
-import { gql } from "apollo-server-express";
-const Schema = gql`
+import { gql } from "apollo-server-lambda";
+
+const typeDefs = gql`
   type Dog {
     id: Int!
     image: String!
@@ -9,4 +10,4 @@ const Schema = gql`
     getDog(id: Int!): Dog
   }
 `;
-export default Schema;
+export default typeDefs;

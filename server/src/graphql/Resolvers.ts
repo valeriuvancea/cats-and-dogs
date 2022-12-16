@@ -1,8 +1,8 @@
 import { getDogWithId, getNextDog } from "../services/dogService";
 
-const Resolvers = {
+const resolvers = {
   Query: {
-    getNextDog: async (_: any, args: any) => {
+    getNextDog: async (_: any, args: { id: number }) => {
       return await getNextDog(args?.id);
     },
     getDog: async (_: any, args: { id: number }) => {
@@ -11,4 +11,4 @@ const Resolvers = {
   },
 };
 
-export default Resolvers;
+export default resolvers;
