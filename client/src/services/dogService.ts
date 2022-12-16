@@ -14,11 +14,12 @@ export interface IGetDogQuery {
 }
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: process.env.GRAPHQL_BACKEND_URL,
   cache: new InMemoryCache(),
 });
 
 export const getNextDog = async (id?: number) => {
+  console.log(process.env.GRAPHQL_BACKEND_URL);
   const result = await client.query<IGetNextDogQuery>({
     query: gql`
       query GetNextDog($id: Int) {

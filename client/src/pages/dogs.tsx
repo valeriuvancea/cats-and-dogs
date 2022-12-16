@@ -21,7 +21,6 @@ const Dogs: React.FC<PageProps> = ({ location }) => {
   const dogId = Number.isInteger(Number(searchParameters.get("dogId")))
     ? Number(searchParameters.get("dogId"))
     : undefined;
-  console.log(location);
 
   useEffect(() => {
     if (dogId) {
@@ -66,6 +65,7 @@ const Dogs: React.FC<PageProps> = ({ location }) => {
       {loading ? (
         <h3>Loading, please wait ...</h3>
       ) : (
+        dog ? 
         <>
           <p>Dog id: {dog?.id}</p>
           <DogImage>
@@ -77,6 +77,10 @@ const Dogs: React.FC<PageProps> = ({ location }) => {
           <Button onClick={getLinkForCurrentDog}>
             Get link for current dog
           </Button>
+        </>
+        : 
+        <>
+          <p>There was an error. Please refresh the page</p>
         </>
       )}
     </TemplatePage>

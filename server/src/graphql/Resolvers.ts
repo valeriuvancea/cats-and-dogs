@@ -1,4 +1,4 @@
-import { getDogWithId, getNextDog } from "../database/databaseService";
+import { getDogWithId, getNextDog } from "../services/dogService";
 
 const Resolvers = {
   Query: {

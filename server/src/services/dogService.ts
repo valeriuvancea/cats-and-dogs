@@ -1,5 +1,5 @@
 import { RowDataPacket } from "mysql2";
-import { pool } from "./connection";
+import { pool } from "./databasePool";
 
 export interface IDog {
   id: number;

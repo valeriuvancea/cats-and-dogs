@@ -1,22 +1,35 @@
 version: "3"
 services:
-  # client:
-  #   build:
-  #     context: client
-  #     dockerfile: Dockerfile.dev
-  #   ports:
-  #     - "8080:80"
+  client:
+    restart: always
+    build:
+      context: client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - GRAPHQL_BACKEND_URL=http://localhost:4000/graphql
+    depends_on:
+      - server
+  server:
+    restart: always
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    links:
+      - db
   db:
     image: mysql:8.0
-    # cap_add:
-    #   - SYS_NICE
     restart: always
     command: --init-file /data/application/init.sql
-    environment:
-      - MYSQL_DATABASE=test
-      - MYSQL_ROOT_PASSWORD=test
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
+    env_file:
+      - .env
     ports:
       - '3306:3306'
     volumes:
