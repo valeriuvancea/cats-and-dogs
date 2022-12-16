@@ -4,3 +4,6 @@ public
 src/gatsby-types.d.ts
 dist
 graphql-lambda
+
+# Local Netlify folder
+.netlify

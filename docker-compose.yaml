@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      - GRAPHQL_BACKEND_URL=http://localhost:9000/graphql
+      - GRAPHQL_BACKEND_URL=http://localhost:8888/.netlify/functions/graphql
     depends_on:
       - server
   server:
@@ -17,7 +17,7 @@ services:
       context: server
       dockerfile: Dockerfile
     ports:
-      - "9000:9000"
+      - "8888:8888"
     env_file:
       - .env
     depends_on:
