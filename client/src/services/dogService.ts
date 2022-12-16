@@ -14,7 +14,7 @@ export interface IGetDogQuery {
 }
 
 const client = new ApolloClient({
-  uri: process.env.GRAPHQL_BACKEND_URL,
+  uri: process.env.GATSBY_GRAPHQL_BACKEND_URL,
   cache: new InMemoryCache(),
 });
 
