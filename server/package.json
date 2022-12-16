@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "build:lambda": "tsc & netlify-lambda build dist/lambda",
+    "build": "tsc & netlify-lambda build dist/lambda",
+    "build:docker": "tsc",
     "start": "tsc & netlify-lambda serve dist/lambda",
     "dev": "nodemon -e ts  --exec \"npm run start\""
   },
