@@ -33,6 +33,7 @@ const rowsToDog = (rows: IDogDb[]) => {
 
 export const getDogWithId = async (id: number): Promise<IDog | null> => {
   const [rows] = await pool.query<IDogDb[]>(
+    //This is prone to sql injection, but the input is also verified by graphql to be an int
     `SELECT * FROM Dogs WHERE id = ${id}`
   );
   return rowsToDog(rows);
@@ -43,6 +44,7 @@ export const getNextDog = async (id?: number): Promise<IDog | null> => {
   let sql = "";
   // We will consider that there are no missing ids, and when the user wants the next dog from the last one, the cycle will start from the begining
   if (id && id !== numberOfDogs) {
+    //This is prone to sql injection, but the input is also verified by graphql to be an int
     sql = `SELECT * FROM Dogs WHERE id = ${id + 1}`;
   } else {
     sql = `SELECT * FROM Dogs GROUP BY id HAVING MIN(id)`;
