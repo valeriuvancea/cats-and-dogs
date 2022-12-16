@@ -19,7 +19,6 @@ const client = new ApolloClient({
 });
 
 export const getNextDog = async (id?: number) => {
-  console.log(process.env.GRAPHQL_BACKEND_URL);
   const result = await client.query<IGetNextDogQuery>({
     query: gql`
       query GetNextDog($id: Int) {

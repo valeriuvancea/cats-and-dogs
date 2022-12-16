@@ -9,4 +9,4 @@ RUN rm -rf ./*
 COPY --from=builder /app/public .
 COPY ./set-env.sh ./set-env.sh
 RUN chmod +x ./set-env.sh
-CMD ["sh", "-c", "./set-env.sh && nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "cd /usr/share/nginx/html/ && ./set-env.sh && nginx -g 'daemon off;'"]
