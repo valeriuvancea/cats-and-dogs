@@ -84,13 +84,13 @@ const TemplatePage: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <Main>
-      <Header>
+      <Header data-testid="header">
         <StyledLink to="/">Cats</StyledLink>
         <StyledLink to="/dogs">Dogs</StyledLink>
       </Header>
       <Content>{children}</Content>
-      <Footer>
-        {data.site.siteMetadata.title} - {new Date().getFullYear()}{" "}
+      <Footer data-testid="footer">
+        {data.site.siteMetadata.title} - {new Date().getFullYear()}
       </Footer>
     </Main>
   );

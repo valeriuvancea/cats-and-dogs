@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import type { HeadFC } from "gatsby";
 import TemplatePage, { Button } from "../components/TemplatePage";
 import { useEffect, useState } from "react";
 import { getCatFact } from "../services/catsService";
@@ -10,7 +10,7 @@ const Fact = styled.p`
   padding: 10px;
 `;
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC = () => {
   const [fact, setFact] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -31,13 +31,15 @@ const IndexPage: React.FC<PageProps> = () => {
 
   return (
     <TemplatePage>
-      <h1>Random Fact about cats:</h1>
+      <h1 data-testid="title">Random Fact about cats:</h1>
       {loading ? (
-        <h3>Loading, please wait ...</h3>
+        <h3 data-testid="loading">Loading, please wait ...</h3>
       ) : (
         <>
-          <Fact>{fact}</Fact>
-          <Button onClick={getRandomFact}>Get new fact</Button>
+          <Fact data-testid="fact">{fact}</Fact>
+          <Button onClick={getRandomFact} data-testid="new-fact-button">
+            Get new fact
+          </Button>
         </>
       )}
     </TemplatePage>

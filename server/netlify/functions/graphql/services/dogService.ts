@@ -20,7 +20,7 @@ const getNumberOfDogs = async () => {
   return rows[0].number;
 };
 
-const rowsToDog = (rows: IDogDb[]) => {
+export const rowsToDog = (rows: IDogDb[]) => {
   if (rows.length > 0) {
     return {
       id: rows[0].id,

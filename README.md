@@ -1,54 +1,33 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal TypeScript starter
-</h1>
+# Cats and dogs
+This is a demo fullstack project using the following technologies:
+- Gatsby js
+- Apollo server with graphql
 
-## 🚀 Quick start
+## Running locally
+In order to run this project locally one needs Docker install. The following command needs to be run to start the project
+```
+docker-compose up
+```
+After this command has been ran, one needs to wait for the `cats-and-dogs-client-1` container to be up and running,and then access the following page [http://localhost:8080](http://localhost:8080)
+## Structure
+This project contains 3 services:
+1. A front end service found in the `client` folder that is written in typescript using gatsby. It is containerized using a ngix docker
+2. A back end service found in the `server` folder that is written in typescript using a netlify lambda apollo graphql server.
+3. A mysql service
 
-1.  **Create a Gatsby site.**
+## Running tests
+Each service has its own tests, so in order to run tests, one should run the following command from a service's folder (`client` or `server`):
+```
+npm run test
+```
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+## Things that could have been done better
+1. Using an ORM in the backend to have typed queries
+2. Store the images in a storage system (S3 or similar), and use the database to only save references
+3. Test the database queries in the backend
+4. Test the grpahql queries in the backend
+5. Test the dogs page in the frontend
+6. There are some errors in the backend docker, which don't affect the service, but it would be nice to get rid of them
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+## Deployed version
+This project has been deployed to netlify. To access the project, one can click [here](https://heroic-smakager-dc65eb.netlify.app/). The database service used was free, thus it is slow, so the dog images takes a bit to load.
